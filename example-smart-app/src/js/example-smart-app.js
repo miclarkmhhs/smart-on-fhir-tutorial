@@ -14,9 +14,9 @@
         //var usr = usr_rec.read();
         var pt = patient.read();
 
-        $.when(usr,pt).fail(onError);
+        $.when(pt).fail(onError);
 
-        $.when(usr).done(function(patient) {
+        $.when(pt).done(function(patient) {
           var gender = patient.gender;
           var fname = '';
           var lname = '';
