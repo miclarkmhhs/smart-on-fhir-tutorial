@@ -18,6 +18,8 @@
           var gender = patient.gender;
           var fname = '';
           var lname = '';
+          var enc_id ='';
+          var fac_code = '';
 
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
@@ -45,6 +47,8 @@
       fname: {value: ''},
       lname: {value: ''},
       gender: {value: ''},
+      enc_id: {value: ''},
+      fac_code: {value: ''}
     };
   }
 
