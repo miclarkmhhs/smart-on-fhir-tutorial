@@ -10,11 +10,13 @@
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
+        var usr_rec = smart.user;
+        var usr = usr_rec.read();
         var pt = patient.read();
 
-        $.when(pt).fail(onError);
+        $.when(usr,pt).fail(onError);
 
-        $.when(pt).done(function(patient, obv) {
+        $.when(usr,pt).done(function(patient, usr_rec) {
           var gender = patient.gender;
           var fname = '';
           var lname = '';
