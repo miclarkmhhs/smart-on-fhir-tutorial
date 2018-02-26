@@ -10,8 +10,8 @@
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
-        //var usr_rec = smart.user;
-        //var usr = usr_rec.read();
+        var usr_rec = smart.user;
+        var usr = usr_rec.read();
         var pt = patient.read();
 
         $.when(pt).fail(onError);
