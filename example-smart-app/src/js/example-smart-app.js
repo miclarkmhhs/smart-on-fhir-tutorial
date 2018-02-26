@@ -10,32 +10,15 @@
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
         $('#resp').html(JSON.stringify(smart));
-        var patient = smart.patient;
-        var usr_rec = smart.user;
-        var usr = smart.tokenResponse.user;
-        var pt = patient.read();
+        var usr_name = smart.tokenResponse.username;
+        var FIN_no = smart.tokenResponse.user;
+        var ENC_no = smart.tokenResponse.encounter;
 
-        $.when(pt).fail(onError);
-
-        $.when(pt).done(function(patient,usr) {
-          var gender = patient.gender;
-          var fname = '';
-          var lname = '';
-          var xusr = usr;
-          var enc_id ='';
-          var fac_code = '';
-
-          if (typeof patient.name[0] !== 'undefined') {
-            fname = patient.name[0].given.join(' ');
-            lname = patient.name[0].family.join(' ');
-          }
-
-          var p = defaultPatient();
-          p.gender = gender;
-          p.fname = fname;
-          p.lname = lname;
+          var p = defaultOutput();
+          p.username = usr_name;
+          p.fin_no = FIN_no;
+          p.encounter_no = ENC_no;
           ret.resolve(p);
-        });
       } else {
         onError();
       }
@@ -46,54 +29,16 @@
 
   };
 
-  function defaultPatient(){
+  function defaultOutput(){
     return {
-      fname: {value: ''},
-      lname: {value: ''},
-      gender: {value: ''},
-      enc_id: {value: ''},
+      username: {value: ''},
+      fin_no: {value: ''},
+      encounter_no: {value: ''},
       fac_code: {value: ''}
     };
   }
 
-  function getBloodPressureValue(BPObservations, typeOfPressure) {
-    var formattedBPObservations = [];
-    BPObservations.forEach(function(observation){
-      var BP = observation.component.find(function(component){
-        return component.code.coding.find(function(coding) {
-          return coding.code == typeOfPressure;
-        });
-      });
-      if (BP) {
-        observation.valueQuantity = BP.valueQuantity;
-        formattedBPObservations.push(observation);
-      }
-    });
-
-    return getQuantityValueAndUnit(formattedBPObservations[0]);
-  }
-
-  function isLeapYear(year) {
-    return new Date(year, 1, 29).getMonth() === 1;
-  }
-
-  function calculateAge(date) {
-    if (Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime())) {
-      var d = new Date(date), now = new Date();
-      var years = now.getFullYear() - d.getFullYear();
-      d.setFullYear(d.getFullYear() + years);
-      if (d > now) {
-        years--;
-        d.setFullYear(d.getFullYear() - 1);
-      }
-      var days = (now.getTime() - d.getTime()) / (3600 * 24 * 1000);
-      return years + days / (isLeapYear(now.getFullYear()) ? 366 : 365);
-    }
-    else {
-      return undefined;
-    }
-  }
-
+  
   function getQuantityValueAndUnit(ob) {
     if (typeof ob != 'undefined' &&
         typeof ob.valueQuantity != 'undefined' &&
@@ -108,9 +53,9 @@
   window.drawVisualization = function(p) {
     $('#holder').show();
     $('#loading').hide();
-    $('#fname').html(p.fname);
-    $('#lname').html(p.lname);
-    $('#gender').html(p.gender);
+    $('#username').html(p.username);
+    $('#fin').html(p.fin_no);
+    $('#encounter').html(p.encounter_no);
   };
 
 })(window);
