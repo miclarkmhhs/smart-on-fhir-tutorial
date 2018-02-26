@@ -11,22 +11,20 @@
       if (smart.hasOwnProperty('patient')) {
         $('#resp').html(JSON.stringify(smart));
         var usr_name = smart.tokenResponse.username;
-        var FIN_no = smart.tokenResponse.user;
+        var FIN_no = smart.tokenResponse.patient;
         var ENC_no = smart.tokenResponse.encounter;
 
-          var p = defaultOutput();
-          p.username = usr_name;
-          p.fin_no = FIN_no;
-          p.encounter_no = ENC_no;
-          ret.resolve(p);
+        var p = defaultOutput();
+        p.username = usr_name;
+        p.fin_no = FIN_no;
+        p.encounter_no = ENC_no;
+        ret.resolve(p);
       } else {
         onError();
       }
     }
-
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
-
   };
 
   function defaultOutput(){
