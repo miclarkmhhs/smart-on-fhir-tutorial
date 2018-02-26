@@ -35,7 +35,6 @@
       fac_code: {value: ''}
     };
   }
-
   
   function getQuantityValueAndUnit(ob) {
     if (typeof ob != 'undefined' &&
