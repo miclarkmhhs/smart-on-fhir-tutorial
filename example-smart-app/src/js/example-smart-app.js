@@ -9,6 +9,7 @@
 
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
+        $('#resp').html(JSON.stringify(smart));
         var patient = smart.patient;
         var usr_rec = smart.user;
         var usr = smart.tokenResponse.user;
