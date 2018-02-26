@@ -16,10 +16,11 @@
 
         $.when(pt).fail(onError);
 
-        $.when(pt).done(function(patient) {
+        $.when(pt).done(function(patient,usr) {
           var gender = patient.gender;
           var fname = '';
           var lname = '';
+          var xusr = usr;
           var enc_id ='';
           var fac_code = '';
 
