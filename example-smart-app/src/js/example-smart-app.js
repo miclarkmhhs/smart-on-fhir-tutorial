@@ -15,7 +15,6 @@
         $.when(pt).fail(onError);
 
         $.when(pt).done(function(patient, obv) {
-          var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           var fname = '';
           var lname = '';
