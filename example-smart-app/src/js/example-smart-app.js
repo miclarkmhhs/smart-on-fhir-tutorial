@@ -19,7 +19,7 @@
         $.when(pt).fail(onError);        
         $.when(pt).done(function(patient) {
           var x = patient;
-        }
+        });
         var p = defaultOutput();
         p.username = usr_name;
         p.fin_no = FIN_no;
