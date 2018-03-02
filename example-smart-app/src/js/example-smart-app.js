@@ -8,14 +8,18 @@
     }
 
     function onReady(smart)  {
-      if (smart.hasOwnProperty('patient')) {
+      if (smart.hasOwnProperty('patient')) {                                
         $('#resp').html(JSON.stringify(smart));
-        var patient = smart.patient;
-        var pt = patient.read();
-        var usr_name = smart.tokenResponse.username;
-        var FIN_no = smart.tokenResponse.patient;
+        var usr_name = smart.tokenResponse.username;        
+        var FIN_no = smart.tokenResponse.patient;        
         var ENC_no = smart.tokenResponse.encounter;
-
+        var patient = smart.patient;
+        var pt = patient.read();
+        
+        $.when(pt).fail(onError);        
+        $.when(pt).done(function(patient) {
+          var x = patient;
+        }
         var p = defaultOutput();
         p.username = usr_name;
         p.fin_no = FIN_no;
