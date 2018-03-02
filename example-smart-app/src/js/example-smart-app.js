@@ -16,10 +16,7 @@
         var patient = smart.patient;
         var pt = patient.read();
         var enc = smart.patient.api.search({
-          type: 'Encounter',
-          query: {
-            patientID: '1234567898' 
-          }
+          type: 'Encounter'
         });
         
         $.when(pt,enc).fail(onError);        
