@@ -12,7 +12,7 @@
         $('#resp').html(JSON.stringify(smart));
         var usr_name = smart.tokenResponse.username;        
         var patient = smart.patient;
-        var enc_json = {type:'Encounter', id: ''};
+        var enc_json = {'type':'Encounter', 'id': ''};
         var data = {};
         data[enc_json.id.toString()] = smart.tokenResponse.encounter;
         //var enc_string = JSON.parse(data);
