@@ -15,9 +15,10 @@
         var ENC_no = smart.tokenResponse.encounter;
         var patient = smart.patient;
         var pt = patient.read();
-        var enc = smart.patient.api.search({
-          type: 'Encounter'
-        });
+        var enc = smart.patient.encounter.read();
+        //var enc = smart.patient.api.search({
+        //  type: 'Encounter'
+        //});
         
         $.when(pt,enc).fail(onError);        
         $.when(pt,enc).done(function(patient,encounter) {
