@@ -16,7 +16,7 @@
         var pt = patient.read();
         
         $.when(pt,enc).fail(onError);        
-        $.when(pt,enc).done(function(patient,encounter) 
+        $.when(pt,enc).done(function(patient,encounter){ 
         var loc = encounter.data.location["0"].location.display;
         var enc_text = encounter.data.identifier["0"].value;
         var mrn_text = patient.identifier["0"].value;
