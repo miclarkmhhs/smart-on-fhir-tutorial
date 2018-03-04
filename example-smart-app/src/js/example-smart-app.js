@@ -46,17 +46,6 @@
       birth_date: {value: ''}
     };
   }
-  
-  function getQuantityValueAndUnit(ob) {
-    if (typeof ob != 'undefined' &&
-        typeof ob.valueQuantity != 'undefined' &&
-        typeof ob.valueQuantity.value != 'undefined' &&
-        typeof ob.valueQuantity.unit != 'undefined') {
-          return ob.valueQuantity.value + ' ' + ob.valueQuantity.unit;
-    } else {
-      return undefined;
-    }
-
 
   window.drawVisualization = function(p) {
     $('#holder').show();
