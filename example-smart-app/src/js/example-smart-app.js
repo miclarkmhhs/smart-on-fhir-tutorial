@@ -15,15 +15,15 @@
         var ENC_no = smart.tokenResponse.encounter;
         var patient = smart.patient;
         var pt = patient.read();
-        var enc = smart.patient.encounter.read();
+       // var enc = smart.patient.encounter.read();
         //var enc = smart.patient.api.search({
         //  type: 'Encounter'
         //});
         
-        $.when(pt,enc).fail(onError);        
-        $.when(pt,enc).done(function(patient,encounter) {
+        $.when(pt).fail(onError);        
+        $.when(pt).done(function(patient) {
         var x = patient;
-        var y = encounter;
+        //var y = encounter;
         var p = defaultOutput();
         p.username = usr_name;
         p.fin_no = FIN_no;
