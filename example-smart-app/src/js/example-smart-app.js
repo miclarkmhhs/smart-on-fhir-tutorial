@@ -24,11 +24,13 @@
         $.when(pt,enc).fail(onError);        
         $.when(pt,enc).done(function(patient,encounter) {
         var x = patient;
-        var y = encounter;
+        var loc = encounter.data.location["0"].location.display;
+        var enc_text = encounter.data.identifier["0"].value;
         var p = defaultOutput();
         p.username = usr_name;
         p.fin_no = FIN_no;
-        p.encounter_no = ENC_no;
+        p.encounter_no = enc_text;
+        p.fac_code = loc;
         ret.resolve(p);
         });                                      
       } else {
@@ -65,6 +67,7 @@
     $('#username').html(p.username);
     $('#fin').html(p.fin_no);
     $('#encounter').html(p.encounter_no);
-  };
+    $('#location').html(p.fac_code);
+  };  };
 
 })(window);
