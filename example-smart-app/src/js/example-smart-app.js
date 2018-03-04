@@ -12,9 +12,10 @@
         $('#resp').html(JSON.stringify(smart));
         var usr_name = smart.tokenResponse.username;        
         var patient = smart.patient;
-        var json_string = '"type":"Encounter", "id": "' + smart.tokenResponse.encounter + '"';
-        var enc_string = JSON.parse(json_string);
-        enc_string = '';
+        var enc_json = {type:'Encounter', id: ''};
+        var data = {}
+        data[enc_json.id.toString()] = smart.tokenResponse.encounter;
+        var enc_string = JSON.parse(data);
         var enc = smart.api.read(enc_string);
         var pt = patient.read();
         
