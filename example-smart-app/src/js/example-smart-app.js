@@ -14,17 +14,17 @@
         var FIN_no = smart.tokenResponse.patient;        
         var ENC_no = smart.tokenResponse.encounter;
         var patient = smart.patient;
+        var enc = smart.api.read({'type':'Encounter', 'id': '4027930'});
         var pt = patient.read();
 
         //var enc = smart.patient.api.search({
         //  type: 'Encounter'
         //});
         
-        $.when(pt).fail(onError);        
-        $.when(pt).done(function(patient) {
+        $.when(pt,enc).fail(onError);        
+        $.when(pt,enc).done(function(patient,encounter) {
         var x = patient;
-        var enc = x.encounter.read();
-        //var y = encounter;
+        var y = encounter;
         var p = defaultOutput();
         p.username = usr_name;
         p.fin_no = FIN_no;
