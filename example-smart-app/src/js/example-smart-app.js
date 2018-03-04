@@ -14,6 +14,7 @@
         var patient = smart.patient;
         var json_string = "{'type':'Encounter', 'id': '" + smart.tokenResponse.encounter + "'}";
        // var enc_string = JSON.parse(json_string);
+        enc_string = '';
         var enc = smart.api.read(enc_string);
         var pt = patient.read();
         
