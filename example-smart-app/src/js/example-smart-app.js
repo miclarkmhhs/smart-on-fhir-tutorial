@@ -68,6 +68,6 @@
     $('#fin').html(p.fin_no);
     $('#encounter').html(p.encounter_no);
     $('#location').html(p.fac_code);
-  };  };
+  };
 
 })(window);
