@@ -11,26 +11,21 @@
       if (smart.hasOwnProperty('patient')) {                                
         $('#resp').html(JSON.stringify(smart));
         var usr_name = smart.tokenResponse.username;        
-        var FIN_no = smart.tokenResponse.patient;        
-        var ENC_no = smart.tokenResponse.encounter;
         var patient = smart.patient;
         var enc = smart.api.read({'type':'Encounter', 'id': '4027930'});
         var pt = patient.read();
-
-        //var enc = smart.patient.api.search({
-        //  type: 'Encounter'
-        //});
         
         $.when(pt,enc).fail(onError);        
-        $.when(pt,enc).done(function(patient,encounter) {
-        var x = patient;
+        $.when(pt,enc).done(function(patient,encounter) 
         var loc = encounter.data.location["0"].location.display;
         var enc_text = encounter.data.identifier["0"].value;
+        var mrn_text = patient.identifier["0"].value;
         var p = defaultOutput();
         p.username = usr_name;
-        p.fin_no = FIN_no;
+        p.fin_no = mrn_text;
         p.encounter_no = enc_text;
         p.fac_code = loc;
+        p.birth_date = patient.birthDate;
         ret.resolve(p);
         });                                      
       } else {
@@ -46,7 +41,8 @@
       username: {value: ''},
       fin_no: {value: ''},
       encounter_no: {value: ''},
-      fac_code: {value: ''}
+      fac_code: {value: ''},
+      birth_date: {value: ''}
     };
   }
   
