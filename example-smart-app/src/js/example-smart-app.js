@@ -1,10 +1,11 @@
-(function(window){
-  window.extractData = function() {
-    var ret = $.Deferred();
     var loc = '';
     var enc_text = '';
     var usr_name = '';
 
+(function(window){
+  window.extractData = function() {
+    var ret = $.Deferred();
+	  
     function onError() {
       console.log('Loading error', arguments);
       ret.reject();
