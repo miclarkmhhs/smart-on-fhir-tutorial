@@ -12,15 +12,15 @@
         $('#resp').html(JSON.stringify(smart));
         var usr_name = smart.tokenResponse.username;        
         var patient = smart.patient;
+        var user = smart.user;
         var enc_json = {'type':'Encounter', 'id': ''};
-        //var json_string = JSON.stringify(enc_json);
-        //var enc_string = JSON.parse(json_string);
         enc_json['id'] = smart.tokenResponse.encounter;
         var enc = smart.api.read(enc_json);
         var pt = patient.read();
+        var usr = user.read();
         
-        $.when(pt,enc).fail(onError);        
-        $.when(pt,enc).done(function(patient,encounter){ 
+        $.when(usr,pt,enc).fail(onError);        
+        $.when(usr,pt,enc).done(function(user,patient,encounter){ 
         var loc = encounter.data.location["0"].location.display;
         var enc_text = encounter.data.identifier["0"].value;
         var mrn_text = patient.identifier["0"].value;
