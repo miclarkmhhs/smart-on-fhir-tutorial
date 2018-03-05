@@ -17,10 +17,9 @@
         enc_json['id'] = smart.tokenResponse.encounter;
         var enc = smart.api.read(enc_json);
         var pt = patient.read();
-        var usr = user.read();
         
-        $.when(usr,pt,enc).fail(onError);        
-        $.when(usr,pt,enc).done(function(user,patient,encounter){ 
+        $.when(pt,enc).fail(onError);        
+        $.when(pt,enc).done(function(patient,encounter){ 
         var loc = encounter.data.location["0"].location.display;
         var enc_text = encounter.data.identifier["0"].value;
         var mrn_text = patient.identifier["0"].value;
