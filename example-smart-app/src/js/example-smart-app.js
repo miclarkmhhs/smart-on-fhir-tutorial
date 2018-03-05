@@ -107,25 +107,25 @@
                 // Create and push patient MRN
                 var mrn = {};
                 mrn.client = "memorialHerman";
-		            mrn.system = "cerner";
+		mrn.system = "cerner";
                 mrn.number = fin;
                 jsonPost.patient.mrns.push(mrn);
 
                 // Create and push locations
-		            locations = []
+		locations = []
                 var location = {};
                 location.facility = loc_fac;
-                location.transactionDateTime = "2017-01-22T14:45:48.032Z"
-                location.client = "memorialHerman"
-                location.building = "Main"
-                location.nurseOrAmbulatoryUnit = loc_unit
-		            locations.push(location);
+                location.transactionDateTime = "2017-01-22T14:45:48.032Z";
+                location.client = "memorialHerman";
+                location.building = "Main";
+                location.nurseOrAmbulatoryUnit = "";
+		locations.push(location);
 
                 // Create and push encounters
                 var encounter = {};
                 encounter.client = "memorialHerman";
                 encounter.fin = enctr;
-		            encounter.locations = locations;
+		encounter.locations = locations;
                 jsonPost.patient.encounters.push(encounter);
 
                 // Setup Provider
@@ -134,12 +134,10 @@
 		            // Create and push provider ids
                 var userId = {};
                 userId.client = "memorialHerman";
-		            userId.system = "cerner";
+		userId.system = "cerner";
                 userId.id = user;
                 jsonPost.provider.userIds.push(userId); 
-
                 //txtdiv.innerHTML = JSON.stringify(jsonPost);
-
                 return jsonPost;
             };
             
