@@ -27,11 +27,6 @@
         enc_text = encounter.data.identifier["0"].value;
         var mrn_text = patient.identifier["0"].value;
         var p = defaultOutput();
-        p.username = usr_name;
-        p.fin_no = mrn_text;
-        p.encounter_no = enc_text;
-        p.fac_code = loc;
-        p.birth_date = patient.birthDate;
         ret.resolve(p);
         });                                      
       } else {
@@ -42,24 +37,9 @@
     return ret.promise();
   };
 
-  function defaultOutput(){
-    return {
-      username: {value: ''},
-      fin_no: {value: ''},
-      encounter_no: {value: ''},
-      fac_code: {value: ''},
-      birth_date: {value: ''}
-    };
-  }
-
   window.drawVisualization = function(p) {
     $('#holder').show();
     $('#loading').hide();
-    $('#username').html(p.username);
-    $('#fin').html(p.fin_no);
-    $('#encounter').html(p.encounter_no);
-    $('#birth_date').html(p.birth_date);
-    $('#location').html(p.fac_code);
     sendData(enc_text,loc,usr_name);
   };
 
