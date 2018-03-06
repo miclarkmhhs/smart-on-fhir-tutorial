@@ -119,6 +119,7 @@ var usr_name = '';
                 userId.id = user;
                 jsonPost.provider.userIds.push(userId); 
                 $('#resp').append(JSON.stringify(jsonPost));
+		$('#resp').append('<BR><BR>');    
                 return jsonPost;
             };
             
@@ -128,6 +129,7 @@ var usr_name = '';
                 postAjax('https://emr.qa-ps.com/ws/api/v1/emrlink/',jsonPost,function (data) 
 	        {
                    $('#resp').append(data);
+		   $('#resp').append('<BR><BR>');
                    //window.location.href = data;
                 });
             }
