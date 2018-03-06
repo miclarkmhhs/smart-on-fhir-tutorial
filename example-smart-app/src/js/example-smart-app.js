@@ -116,15 +116,15 @@
 		userId.system = "cerner";
                 userId.id = user;
                 jsonPost.provider.userIds.push(userId); 
-                //txtdiv.innerHTML = JSON.stringify(jsonPost);
+                $('#resp').appdnd(JSON.stringify(jsonPost));
                 return jsonPost;
             };
             
             function sendData(enctr,loc_fac,user) {
                 var jsonPost = createJson(enctr, loc_fac,user);
                 postAjax('https://emr.qa-ps.com/ws/api/v1/emrlink/',jsonPost,function (data) {
-                       //respdiv.innerHTML = data;
-                       window.location.href = data;
+                       $('#resp').appdnd(data);
+                       //window.location.href = data;
                 });
             }
 
