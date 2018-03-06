@@ -87,7 +87,7 @@
                 var mrn = {};
                 mrn.client = "memorialHerman";
 		mrn.system = "cerner";
-                mrn.number = fin;
+                mrn.number = "";
                 jsonPost.patient.mrns.push(mrn);
 
                 // Create and push locations
