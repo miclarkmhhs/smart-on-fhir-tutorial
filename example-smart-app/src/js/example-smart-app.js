@@ -26,8 +26,7 @@
         loc = encounter.data.location["0"].location.display;
         enc_text = encounter.data.identifier["0"].value;
         var mrn_text = patient.identifier["0"].value;
-        var p = defaultOutput();
-        ret.resolve(p);
+        ret.resolve();
         });                                      
       } else {
         onError();
@@ -37,8 +36,8 @@
     return ret.promise();
   };
 
-  window.drawVisualization = function(p) {
-    $('#holder').show();
+  window.loadDestinationApp = function() {
+    $('#resp').show();
     $('#loading').hide();
     sendData(enc_text,loc,usr_name);
   };
